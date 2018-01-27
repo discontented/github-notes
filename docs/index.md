@@ -167,4 +167,4 @@ you are on a branch yet to be born
 
 ![Cloning a Repository](images/clone-repo.gif)
 
-![Commiting and Pushing](/images/commit-push.gif)
+![Commiting and Pushing](images/commit-push.gif)
