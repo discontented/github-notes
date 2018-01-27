@@ -165,6 +165,6 @@ you are on a branch yet to be born
 
 ## Using GitHub Desktop
 
-![Cloning a Repository](images/clone-repo.gif)
+![Cloning a Repository](/images/clone-repo.gif)
 
-![Commiting and Pushing](images/commit-push.gif)
+![Commiting and Pushing](/images/commit-push.gif)
