@@ -162,3 +162,9 @@ you are on a branch yet to be born
 *	If you are not, check the local branches: `git branch`
 *	If it does not exist locally `git checkout -b <branch-name>`
 *	Push the file `git push -u <origin-name> <branch-name>`
+
+## Using GitHub Desktop
+
+![Cloning a Repository](images/clone-repo.gif)
+
+![Commiting and Pushing](images/commit-push.gif)
