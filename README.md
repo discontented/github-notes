@@ -168,3 +168,8 @@ you are on a branch yet to be born
 ![Cloning a Repository](images/clone-repo.gif)
 
 ![Commiting and Pushing](images/commit-push.gif)
+
+## Git Hooks
+
+## Resources
+[Git Hooks](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
