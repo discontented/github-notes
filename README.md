@@ -145,7 +145,7 @@ git push -u <origin> <branch>
 remote: Repository not found
 ```
 
-```
+```bash
 git checkout
 you are on a branch yet to be born
 ```
@@ -164,12 +164,58 @@ you are on a branch yet to be born
 *	Push the file `git push -u <origin-name> <branch-name>`
 
 ## Using GitHub Desktop
-
+* To clone a repository from GitHub onto your local machine:
 ![Cloning a Repository](images/clone-repo.gif)
 
+* After code has been completed in your local environment, commit to the GitHub repo by adding a message and pushing to the repo.
+* This can also be done through a CLI with:
+```bash
+git add <file>
+git commit -m "<message>"
+git push
+```
 ![Commiting and Pushing](images/commit-push.gif)
+
+* GitHub desktop downloads and updates to the folder you specified when cloning.
+    * If there are multiple branches, the folder only contains contents of the current branch.
+        * Contents of branches do not simultaneously exist in the same folder.
+    * You must switch to a different branch through GitHub desktop or the CLI to load those branches.
+* GitHub Desktop can open files to be edited in your favorite IDE:
+![Open in IDE](images/open-editor.gif)
 
 ## Git Hooks
 
+* Fires off custom scripts when events occur in the repo.
+* Can reside in either local or server-side repositories.
+
+### Client-side Hooks
+* Triggered by committing or merging
+
+### Server-Side Hooks
+* Receive pushed commits
+* Scripts run before and after pushes to the server.
+* When there is a push from a client:
+    * `pre-receive`
+        * Makes sure none of the updated references are non-fast-forwards.
+        * If pusher is trying to push to multiple branches, runs only once.
+    * `update`
+        * Run once for each branch the pusher is trying to update.
+        * If pusher trying to push to multiple branches, runs once per branch they're pushing to.
+    * `post-receive`
+        * Can be used to update other services or notify users.
+            * e-mail
+            * notifying a CI server
+            * update ticket-tracking system
+
+### Webhooks
+
+
+### Installation
+* Stored in hooks subdirectory of Git project.
+    * Usually `.git/hooks`
+
+
 ## Resources
 [Git Hooks](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
+[Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
+[Webhooks - GitHub](https://developer.github.com/webhooks/)
