@@ -128,7 +128,8 @@ Git is a software that allows you to keep track of changes made to a project ove
     * Name it after the computer that is accessing github
 *	“Key” field
     * The SSH key that was generated through ssh-keygen
- 
+
+
 ## Common Errors
 ```bash
 git push -u <origin> <branch>
