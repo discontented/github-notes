@@ -38,7 +38,7 @@ Git is a software that allows you to keep track of changes made to a project ove
 
 `git diff HEAD`
 *	The most recent change to the last file you committed.
- 
+
 ## Branches
 `git branch`
 *	Lists all branches of repository
