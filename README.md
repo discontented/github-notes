@@ -23,8 +23,10 @@ Git is a software that allows you to keep track of changes made to a project ove
 `git add <file>`
 *	Adds the specified file to be committed (commit) to the repository and tracks changes on the file
 
-`git remote add <remote name> <URL>`
-`git remote add origin https://github.com/user/repo.git`
+```bash
+git remote add <remote name> <URL>
+git remote add origin https://github.com/user/repo.git
+```
 *	<URL> is the destination of a remote repository.
 *	The name is anything you give it.
 *	This adds your local repo to the remote one.
