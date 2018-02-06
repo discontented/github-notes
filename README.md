@@ -3,9 +3,9 @@
 Git is a software that allows you to keep track of changes made to a project over time. Git works by recording the changes you make to a project, storing those changes, then allowing you to reference them as needed.
 
 ## Git Workflow
-1)	A Working Directory: where you'll be doing all the work: creating, editing, deleting and organizing files
-2)	A Staging Area: where you'll list changes you make to the working directory
-3)	A Repository: where Git permanently stores those changes as different versions of the project
+1. A Working Directory: where you'll be doing all the work: creating, editing, deleting and organizing files
+2. A Staging Area: where you'll list changes you make to the working directory
+3. A Repository: where Git permanently stores those changes as different versions of the project
     * Changes are saved as a commit
 
 `git init`
