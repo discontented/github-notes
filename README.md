@@ -105,6 +105,7 @@ git remote add origin https://github.com/user/repo.git
 
 ## Git URLs
 *	Git provides https or SSH to download and upload.
+
 ### SSH
 * Github email address is address you use to login
 `ssh-keygen -t rsa -b 4096 -C “email@address.com”`
@@ -116,6 +117,7 @@ git remote add origin https://github.com/user/repo.git
 `eval $(ssh-agent -s)`
 *	Add the private key to the ssh-agent
 `ssh-add ~/.ssh/id_rsa`
+
 ### Add SSH to GitHub Account
 *	Check for existing keys
 `ls -al ~/.ssh`
@@ -190,6 +192,10 @@ git push
 
 * Fires off custom scripts when events occur in the repo.
 * Can reside in either local or server-side repositories.
+* Hooks are stored in the .git/hooks/ folder of a repo
+* The scripts in the /hooks/ folder must be executable and first line must be a shebang magic number that calls the correct script interpreter.
+* All default hooks have the extension `.sample`
+    * Must remove `.sample` for the script to execute
 
 ### Client-side Hooks
 * Triggered by committing or merging
@@ -222,3 +228,4 @@ git push
 [Git Hooks](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
 [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
 [Webhooks - GitHub](https://developer.github.com/webhooks/)
+[Git Hook Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks)
