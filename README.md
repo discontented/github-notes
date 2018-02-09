@@ -155,22 +155,44 @@ git remote add origin https://github.com/user/repo.git
 * `-y` outputs the public key
 * `-f` input file
 * `<key location>`
+    * Usually located at ~/.ssh/id_rsa
 
-### Deploy Keys
+### Deploy Keys with AWS
+
+0. Log into root user
+
+`sudo su`
 
 1. Run `ssh-keygen` to generate a key.
+
     a. If a key already exists you can check with `ls -al ~/.ssh`
     b. Leave blank for name and passphrase.  The name will default to id_rsa.
-2. Generate an agent id: `eval $(ssh-agent -s)`
-3. Add the private key to the ssh-agent `ssh-add ~/.ssh/<private_key_name>`
+    c. If wanting to use an SSH agent:
+
+        i. Generate an agent id:
+        
+        `eval $(ssh-agent -s)`
+
+        ii. Add the private key to the ssh-agent
+        
+        `ssh-add ~/.ssh/<private_key_name>`
+
 2. Print the `ssh-keygen -y -f ~/.ssh/id_rsa` and copy.
+
     a. If you highlight the text with RMB in PuTTY it will automatically copy.
+
 3. Paste this key into the repo's deploy keys.
 4. Test connection to github `ssh -T git@github.com`
-5. If successful what should be displayed is
-```bash
-Hi {username/repo} You\'ve successfully authenticated, but GitHub does not provide shell access.
-```
+
+    a. If successful what should be displayed is
+    ```bash
+    Hi {username/repo} You\'ve successfully authenticated, but GitHub does not provide shell access.
+    ```
+
+5. Try interacting with the repo!
+    a. clone
+    b. push
+    c. pull
 
 ## Using GitHub Desktop
 
@@ -266,6 +288,23 @@ you are on a branch yet to be born
 *	If you are not, check the local branches: `git branch`
 *	If it does not exist locally `git checkout -b <branch-name>`
 *	Push the file `git push -u <origin-name> <branch-name>`
+
+```bash
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+* Run `ssh -vT git@github.com`
+* Start ssh-agent
+`ssh-agent -s`
+* Check that a public key is loaded into ssh-agent
+`ssh-add -l`
+
+`debug1: key_load_public: No such file or directory`
+
 
 
 ## Resources
