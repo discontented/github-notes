@@ -151,7 +151,7 @@ git remote add origin https://github.com/user/repo.git
 
 `ssh-keygen -y -f <key location>`
 
-* `-y` outputs the public key.
+* `-y` outputs the public key
 * `-f` input file
 * `<key location>`
 
@@ -160,6 +160,8 @@ git remote add origin https://github.com/user/repo.git
 1. Run `ssh-keygen` to generate a key.
     a. If a key already exists you can check with `ls -al ~/.ssh`
     b. Leave blank for name and passphrase.  The name will default to id_rsa.
+2. Generate an agent id: `eval $(ssh-agent -s)`
+3. Add the private key to the ssh-agent `ssh-add ~/.ssh/<private_key_name>`
 2. Print the `ssh-keygen -y -f ~/.ssh/id_rsa` and copy.
     a. If you highlight the text with RMB in PuTTY it will automatically copy.
 3. Paste this key into the repo's deploy keys.
@@ -168,43 +170,6 @@ git remote add origin https://github.com/user/repo.git
 ```bash
 Hi {username/repo} You've successfully authenticated, but GitHub does not provide shell access.
 ```
-
-
-## Common Errors
-
-```bash
-git push -u <origin> <branch>
-ssh: Could not resolve hostname https: Name or service not known.
-```
-
-* The hostname stored in origin is most likely wrong.
-* Double check it with:
-`git remote -v`
-* To change the url:
-`git remote set-url <origin> <URL>`
-
-```bash
-git push -u <origin> <branch>
-remote: Repository not found
-```
-
-```bash
-git checkout
-you are on a branch yet to be born
-```
-*	Make sure the repository has been initialized locally
-*	Make sure the repository exists on github.
-*	Make sure the local repository knows of the remote repository.
-    * Double check it with: `git remote -v`
-        * If it does not know of the remote repository, get the repository’s address from github.
-
-`git remote add <origin-name> <url>`
-*	Add the contents of the folder to be staged: `git add .`
-*	Commit the file: `git commit -m “commit message”`
-*	Double check you are on the same branch you are trying to push to `git status`
-*	If you are not, check the local branches: `git branch`
-*	If it does not exist locally `git checkout -b <branch-name>`
-*	Push the file `git push -u <origin-name> <branch-name>`
 
 ## Using GitHub Desktop
 
@@ -239,9 +204,11 @@ git push
     * Must remove `.sample` for the script to execute
 
 ### Client-side Hooks
+
 * Triggered by committing or merging
 
 ### Server-Side Hooks
+
 * Receive pushed commits
 * Scripts run before and after pushes to the server.
 * When there is a push from a client:
@@ -264,6 +231,41 @@ git push
 * Stored in hooks subdirectory of Git project.
     * Usually `.git/hooks`
 
+## Common Errors
+
+```bash
+git push -u <origin> <branch>
+ssh: Could not resolve hostname https: Name or service not known.
+```
+
+* The hostname stored in origin is most likely wrong.
+* Double check it with: `git remote -v`
+* To change the url: `git remote set-url <origin> <URL>`
+
+```bash
+git push -u <origin> <branch>
+remote: Repository not found
+```
+
+```bash
+git checkout
+you are on a branch yet to be born
+```
+
+* Make sure the repository has been initialized locally
+* Make sure the repository exists on github.
+* Make sure the local repository knows of the remote repository.
+    * Double check it with: `git remote -v`
+        * If it does not know of the remote repository, get the repository’s address from github.
+
+`git remote add <origin-name> <url>`
+*	Add the contents of the folder to be staged: `git add .`
+*	Commit the file: `git commit -m “commit message”`
+*	Double check you are on the same branch you are trying to push to `git status`
+*	If you are not, check the local branches: `git branch`
+*	If it does not exist locally `git checkout -b <branch-name>`
+*	Push the file `git push -u <origin-name> <branch-name>`
+
 
 ## Resources
 
@@ -280,3 +282,5 @@ git push
 [Setting up git with SSH](https://gist.github.com/stormpython/9517102)
 
 [Deploy Keys](https://developer.github.com/v3/guides/managing-deploy-keys/)
+
+[Permission Denied Error](https://help.github.com/articles/error-permission-denied-publickey/)
