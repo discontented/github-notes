@@ -128,7 +128,7 @@ git remote add origin https://github.com/user/repo.git
 `ssh-add ~/.ssh/<private_key_name>`
 
 ### Add SSH to GitHub Account
-* Adding an SSH key to your account will allow you to push/pull to all of your GitHub repos from the server where the SSH key exists.
+* Adding an SSH key to your account will allow you to push/pull to all of your GitHub repos from the server where the SSH key exists since it is identifying the server as you.
     * If this server will be accessible by others, consider using a (deploy key)[#deploy-keys] for a specific repo.
 * Check for existing keys
 `ls -al ~/.ssh`
