@@ -130,6 +130,7 @@ git remote add origin https://github.com/user/repo.git
 `ssh-add ~/.ssh/<private_key_name>`
 
 ### Add SSH to GitHub Account
+
 * Adding an SSH key to your account will allow you to push/pull to all of your GitHub repos from the server where the SSH key exists since it is identifying the server as you.
     * If this server will be accessible by others, consider using a [deploy key](#deploy-keys) for a specific repo.
 * Check for existing keys `ls -al ~/.ssh`
@@ -168,7 +169,7 @@ git remote add origin https://github.com/user/repo.git
 4. Test connection to github `ssh -T git@github.com`
 5. If successful what should be displayed is
 ```bash
-Hi {username/repo} You've successfully authenticated, but GitHub does not provide shell access.
+Hi {username/repo} You\'ve successfully authenticated, but GitHub does not provide shell access.
 ```
 
 ## Using GitHub Desktop
