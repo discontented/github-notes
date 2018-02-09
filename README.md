@@ -106,33 +106,49 @@ git remote add origin https://github.com/user/repo.git
 ## Git URLs
 *	Git provides https or SSH to download and upload.
 
-### SSH
-* Github email address is address you use to login
-`ssh-keygen -t rsa -b 4096 -C “email@address.com”`
-*	An SSH key will be generated in a file.
-*	Must input a passphrase for the SSH key
-*	ssh-agent manages your SSH keys.
+### Generating an SSH Key
+* The command `ssh-keygen` will generate a private and public OpenSSH key with the default name `id_rsa`
+    * The key will be located at `~/.ssh/`
+        * `~/.ssh` is shorthand for the current user's home directory.
+        * The location of the ssh key will be stored in `/home/<username>/.ssh/`
+
+* Github email address is address you use to login `ssh-keygen -t rsa -b 4096 -C “email@address.com”`
+    * `-t` specifies the type of key.
+    * `-b` specifies the number of bits in the key to create.
+        * default is 2048 bits
+    * `-C` adds a comment
+        * The comment is only serving as a label and not functionality.  It can be generated without it, such as an SSH key for a shared repo on a shared server.
+* An SSH key will be generated in a file.
+* May add a passphrase for added security.
+* ssh-agent manages your SSH keys.
     * the key must be added to ssh-agent to use
 *	Generate an agent id:
 `eval $(ssh-agent -s)`
 *	Add the private key to the ssh-agent
-`ssh-add ~/.ssh/id_rsa`
+`ssh-add ~/.ssh/<private_key_name>`
 
 ### Add SSH to GitHub Account
-*	Check for existing keys
+* Adding an SSH key to your account will allow you to push/pull to all of your GitHub repos from the server where the SSH key exists.
+    * If this server will be accessible by others, consider using a (deploy key)[#deploy-keys] for a specific repo.
+* Check for existing keys
 `ls -al ~/.ssh`
     * will have a .pub extension for the public key
     * The private key will be the same name without the .pub extension
 
-*	Copy the SSH key to your clipboard
+*	Copy the SSH key to your clipboard 
 `clip < ~/.ssh/id_rsa.pub`
-*	Go to your Settings at github.
-*	Click on SSH and GPG keys
+    * This will only work if you are working on a local terminal.  If you are using PuTTY or another SSH client, then use [copying SSH remotely](#copy-ssh-key-remotely)
+*	Go to your user settings on github.
+*	Click on SSH and GPG keys.
 *	The “Title” field is only descriptive.
     * Name it after the computer that is accessing github
 *	“Key” field
-    * The SSH key that was generated through ssh-keygen
+    * Paste in the SSH key that was generated through ssh-keygen
 
+### Copy SSH Key Remotely
+`ssh-keygen -y -f <key location>`
+* `-y` outputs the public key.
+* Allows you to copy the key from the SSH client in text format.
 
 ## Common Errors
 ```bash
@@ -226,6 +242,13 @@ git push
 
 ## Resources
 [Git Hooks](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
+
 [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
+
 [Webhooks - GitHub](https://developer.github.com/webhooks/)
+
 [Git Hook Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks)
+
+[new keys for ssh github](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+
+[Setting up git with SSH](https://gist.github.com/stormpython/9517102)
