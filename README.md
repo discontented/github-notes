@@ -104,9 +104,11 @@ git remote add origin https://github.com/user/repo.git
 `git push origin master`
 
 ## Git URLs
+
 *	Git provides https or SSH to download and upload.
 
 ### Generating an SSH Key
+
 * The command `ssh-keygen` will generate a private and public OpenSSH key with the default name `id_rsa`
     * The key will be located at `~/.ssh/`
         * `~/.ssh` is shorthand for the current user's home directory.
@@ -122,43 +124,63 @@ git remote add origin https://github.com/user/repo.git
 * May add a passphrase for added security.
 * ssh-agent manages your SSH keys.
     * the key must be added to ssh-agent to use
-*	Generate an agent id:
+* Generate an agent id:
 `eval $(ssh-agent -s)`
-*	Add the private key to the ssh-agent
+* Add the private key to the ssh-agent
 `ssh-add ~/.ssh/<private_key_name>`
 
 ### Add SSH to GitHub Account
 * Adding an SSH key to your account will allow you to push/pull to all of your GitHub repos from the server where the SSH key exists since it is identifying the server as you.
-    * If this server will be accessible by others, consider using a (deploy key)[#deploy-keys] for a specific repo.
-* Check for existing keys
-`ls -al ~/.ssh`
+    * If this server will be accessible by others, consider using a [deploy key](#deploy-keys) for a specific repo.
+* Check for existing keys `ls -al ~/.ssh`
     * will have a .pub extension for the public key
-    * The private key will be the same name without the .pub extension
+    * The private key will be the same name without an extension.
 
-*	Copy the SSH key to your clipboard 
-`clip < ~/.ssh/id_rsa.pub`
+* Copy the SSH key to your clipboard `clip < ~/.ssh/id_rsa.pub`
     * This will only work if you are working on a local terminal.  If you are using PuTTY or another SSH client, then use [copying SSH remotely](#copy-ssh-key-remotely)
-*	Go to your user settings on github.
-*	Click on SSH and GPG keys.
-*	The “Title” field is only descriptive.
+* Go to your user settings on github.
+* Click on SSH and GPG keys.
+* The “Title” field is only descriptive.
     * Name it after the computer that is accessing github
-*	“Key” field
+* “Key” field
     * Paste in the SSH key that was generated through ssh-keygen
 
 ### Copy SSH Key Remotely
+
+* If using PuTTY or any other remote SSH client, print the key to the shell:
+
 `ssh-keygen -y -f <key location>`
+
 * `-y` outputs the public key.
-* Allows you to copy the key from the SSH client in text format.
+* `-f` input file
+* `<key location>`
+
+### Deploy Keys
+
+1. Run `ssh-keygen` to generate a key.
+    a. If a key already exists you can check with `ls -al ~/.ssh`
+    b. Leave blank for name and passphrase.  The name will default to id_rsa.
+2. Print the `ssh-keygen -y -f ~/.ssh/id_rsa` and copy.
+    a. If you highlight the text with RMB in PuTTY it will automatically copy.
+3. Paste this key into the repo's deploy keys.
+4. Test connection to github `ssh -T git@github.com`
+5. If successful what should be displayed is
+```bash
+Hi {username/repo} You've successfully authenticated, but GitHub does not provide shell access.
+```
+
 
 ## Common Errors
+
 ```bash
 git push -u <origin> <branch>
 ssh: Could not resolve hostname https: Name or service not known.
 ```
-*	The hostname stored in origin is most likely wrong.
-*	Double check it with:
+
+* The hostname stored in origin is most likely wrong.
+* Double check it with:
 `git remote -v`
-*	To change the url:
+* To change the url:
 `git remote set-url <origin> <URL>`
 
 ```bash
@@ -185,16 +207,19 @@ you are on a branch yet to be born
 *	Push the file `git push -u <origin-name> <branch-name>`
 
 ## Using GitHub Desktop
-* To clone a repository from GitHub onto your local machine:
+
+To clone a repository from GitHub onto your local machine:
 ![Cloning a Repository](images/clone-repo.gif)
 
 * After code has been completed in your local environment, commit to the GitHub repo by adding a message and pushing to the repo.
 * This can also be done through a CLI with:
+
 ```bash
 git add <file>
 git commit -m "<message>"
 git push
 ```
+
 ![Commiting and Pushing](images/commit-push.gif)
 
 * GitHub desktop downloads and updates to the folder you specified when cloning.
@@ -234,13 +259,14 @@ git push
 
 ### Webhooks
 
-
 ### Installation
+
 * Stored in hooks subdirectory of Git project.
     * Usually `.git/hooks`
 
 
 ## Resources
+
 [Git Hooks](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
 
 [Git Hooks Tutorial](https://www.atlassian.com/git/tutorials/git-hooks)
@@ -252,3 +278,5 @@ git push
 [new keys for ssh github](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 
 [Setting up git with SSH](https://gist.github.com/stormpython/9517102)
+
+[Deploy Keys](https://developer.github.com/v3/guides/managing-deploy-keys/)
