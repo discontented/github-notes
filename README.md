@@ -3,54 +3,77 @@
 Git is a software that allows you to keep track of changes made to a project over time. Git works by recording the changes you make to a project, storing those changes, then allowing you to reference them as needed.
 
 ## Git Workflow
+
 1. A Working Directory: where you'll be doing all the work: creating, editing, deleting and organizing files
 2. A Staging Area: where you'll list changes you make to the working directory
 3. A Repository: where Git permanently stores those changes as different versions of the project
     * Changes are saved as a commit
 
+## Git Commands
+
+### Initializing
+
 `git init`
 
 * Initializes an empty Git repository in the current working directory.
-*	Sets up the tools Git needs to begin tracking changes on the current project.
-*	Creates a hidden folder /.git/ in the directory where git operates.
+* Sets up the tools Git needs to begin tracking changes on the current project.
+* Creates a hidden folder /.git/ in the directory where git operates.
+
+### Status
 
 `git status`
-*	Lists any changes of the contents in the working directory.
-*	Untracked files will be displayed in red
-    *	Untracked files do not have any changes stored.
-*	Green files show changes to a file that need to be committed.
 
+* Lists any changes of the contents in the working directory.
+* Untracked files will be displayed in red
+  * Untracked files do not have any changes stored.
+* Green files show changes to a file that need to be committed.
+
+### Adding to the Staging Area
 `git add <file>`
-*	Adds the specified file to be committed (commit) to the repository and tracks changes on the file
+
+* Adds the specified file to be committed (commit) to the repository and tracks changes on the file
 
 ```bash
 git remote add <remote name> <URL>
 git remote add origin https://github.com/user/repo.git
 ```
-*	<URL> is the destination of a remote repository.
-*	The name is anything you give it.
-*	This adds your local repo to the remote one.
+* <URL> is the destination of a remote repository.
+* The name is anything you give it.
+* This adds your local repo to the remote one.
 
+`git add .`
+* Shortcut method that will add all files in the current directory except for the ignored files.
+  * Ignored files are stored within .gitignore/
+
+## Check Differences
+* You can check the differences between tracked local files and files in the repo or staging area.
 
 `git diff <file>`
-*	Displays changes to a tracked file between the local file and those added to the staging area
-*	Additions to the file are preceded by a + and in green
-*	Any missing lines are preceded by a – and in red
-*	The same lines are in white
+
+* Displays changes to a tracked file between the local file and those added to the staging area
+* Additions to the file are preceded by a + and in green
+* Any missing lines are preceded by a – and in red
+* The same lines are in white
 
 `git diff HEAD`
-*	The most recent change to the last file you committed.
+* The most recent change to the last file you committed.
+
+`git diff {branch}@{1} {branch}`
+
+* Displays differences between previous branch version and current version.
+  * The previous version is one which was last pushed to repo.
+
 
 ## Branches
 `git branch`
-*	Lists all branches of repository
-*	Current branch is preceded by an asterisk
+* Lists all branches of repository
+* Current branch is preceded by an asterisk
 
 `git status`
-*	Lists the current branch and any differences
-*	When it says 'up-to-date' it means up-to-date with the branch that the current branch tracks.
-    * Usually this is the local reference
-    * Not "up-to-date with the latest live status of the upstream.
+* Lists the current branch and any differences
+* When it says 'up-to-date' it means up-to-date with the branch that the current branch tracks.
+  * Usually this is the local reference
+  * Not "up-to-date with the latest live status of the upstream.
 
 `git checkout -b <branch-name>`
 *	Create a new branch locally.
@@ -76,6 +99,7 @@ git remote add origin https://github.com/user/repo.git
 `git pull`
 
 ### Check Differences Between Branches
+
 `git fetch`
 *	Run git fetch first to make sure the local branch is updated.
 
@@ -309,3 +333,5 @@ and the repository exists.
 [Deploy Keys](https://developer.github.com/v3/guides/managing-deploy-keys/)
 
 [Permission Denied Error](https://help.github.com/articles/error-permission-denied-publickey/)
+
+[git diff master](https://stackoverflow.com/questions/1362952/detail-change-after-git-pull)
