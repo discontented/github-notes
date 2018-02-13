@@ -90,13 +90,18 @@ git remote add origin https://github.com/user/repo.git
 *	Any files added to the unstaged area which have been changed can be committed to the repository.
 
 `git fetch`
-*	A local repo won't reflect changes that have been made on the remote repo, so it must be updated first before changes are made.
-*	fetch gets up to date with the commits from the remote repo
+* A local repo won't reflect changes that have been made on the remote repo, so it must be updated first before changes are made.
+* `fetch` gets up to date with the commits from the remote repo
+  * This does not update the local files so it will not change your local working copy.
 
-`get merge`
-*	merge moves those commits to the local branch
+`git merge`
+* merge moves those commits to the local branch
 
 `git pull`
+
+* Brings the local branch up-to-date with the remote branch.
+* Combines `git fetch` and `git merge`
+
 
 ### Check Differences Between Branches
 
