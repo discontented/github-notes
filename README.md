@@ -309,6 +309,7 @@ ssh: Could not resolve hostname https: Name or service not known.
 
 ### Continually prompting for username
 
+* Caused by changing
 * The hostname stored in origin is most likely wrong.
 * Double check it with: `git remote -v` compared to the link provided at the GitHub repo.
 * To change the url: `git remote set-url <origin> <URL>`
