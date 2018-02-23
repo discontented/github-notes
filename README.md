@@ -24,6 +24,10 @@ Git is a software that allows you to keep track of changes made to a project ove
         - [Webhooks](#webhooks)
         - [Installation](#installation)
     - [Common Errors](#common-errors)
+        - [Could not resolve hostname](#could-not-resolve-hostname)
+        - [Continually prompting for username](#continually-prompting-for-username)
+        - [Repository or Branch DNE](#repository-or-branch-dne)
+        - [Permission Denied (publickey)](#permission-denied-publickey)
     - [Resources](#resources)
 
 ## Git Workflow
@@ -292,14 +296,24 @@ git push
 
 ## Common Errors
 
+### Could not resolve hostname
+
 ```bash
 git push -u <origin> <branch>
 ssh: Could not resolve hostname https: Name or service not known.
 ```
 
 * The hostname stored in origin is most likely wrong.
-* Double check it with: `git remote -v`
+* Double check it with: `git remote -v` compared to the link provided at the GitHub repo.
 * To change the url: `git remote set-url <origin> <URL>`
+
+### Continually prompting for username
+
+* The hostname stored in origin is most likely wrong.
+* Double check it with: `git remote -v` compared to the link provided at the GitHub repo.
+* To change the url: `git remote set-url <origin> <URL>`
+
+### Repository or Branch DNE
 
 ```bash
 git push -u <origin> <branch>
@@ -325,6 +339,8 @@ you are on a branch yet to be born
 *	If it does not exist locally `git checkout -b <branch-name>`
 *	Push the file `git push -u <origin-name> <branch-name>`
 
+
+### Permission Denied (publickey)
 ```bash
 Permission denied (publickey).
 fatal: Could not read from remote repository.
@@ -338,8 +354,6 @@ and the repository exists.
 `ssh-agent -s`
 * Check that a public key is loaded into ssh-agent
 `ssh-add -l`
-
-`debug1: key_load_public: No such file or directory`
 
 ## Resources
 
