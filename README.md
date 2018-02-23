@@ -2,6 +2,30 @@
 
 Git is a software that allows you to keep track of changes made to a project over time. Git works by recording the changes you make to a project, storing those changes, then allowing you to reference them as needed.
 
+- [github-notes](#github-notes)
+    - [Git Workflow](#git-workflow)
+    - [Git Commands](#git-commands)
+        - [Initializing](#initializing)
+        - [Status](#status)
+        - [Adding to the Staging Area](#adding-to-the-staging-area)
+    - [Check Differences](#check-differences)
+    - [Branches](#branches)
+        - [Check Differences Between Branches](#check-differences-between-branches)
+    - [Using Git with Github](#using-git-with-github)
+    - [Git URLs](#git-urls)
+        - [Generating an SSH Key](#generating-an-ssh-key)
+        - [Add SSH to GitHub Account](#add-ssh-to-github-account)
+        - [Copy SSH Key Remotely](#copy-ssh-key-remotely)
+        - [Deploy Keys with AWS](#deploy-keys-with-aws)
+    - [Using GitHub Desktop](#using-github-desktop)
+    - [Git Hooks](#git-hooks)
+        - [Client-side Hooks](#client-side-hooks)
+        - [Server-Side Hooks](#server-side-hooks)
+        - [Webhooks](#webhooks)
+        - [Installation](#installation)
+    - [Common Errors](#common-errors)
+    - [Resources](#resources)
+
 ## Git Workflow
 
 1. A Working Directory: where you'll be doing all the work: creating, editing, deleting and organizing files
@@ -63,7 +87,6 @@ git remote add origin https://github.com/user/repo.git
 * Displays differences between previous branch version and current version.
   * The previous version is one which was last pushed to repo.
 
-
 ## Branches
 `git branch`
 * Lists all branches of repository
@@ -101,7 +124,6 @@ git remote add origin https://github.com/user/repo.git
 
 * Brings the local branch up-to-date with the remote branch.
 * Combines `git fetch` and `git merge`
-
 
 ### Check Differences Between Branches
 
@@ -318,8 +340,6 @@ and the repository exists.
 `ssh-add -l`
 
 `debug1: key_load_public: No such file or directory`
-
-
 
 ## Resources
 
