@@ -8,7 +8,14 @@ Git is a software that allows you to keep track of changes made to a project ove
         - [Initializing](#initializing)
         - [Status](#status)
         - [Adding to the Staging Area](#adding-to-the-staging-area)
-    - [Check Differences](#check-differences)
+        - [Check Differences](#check-differences)
+        - [Check Status](#check-status)
+        - [Pushing](#pushing)
+        - [Pulling](#pulling)
+        - [Removing](#removing)
+    - [View Commit History](#view-commit-history)
+        - [`git log` Flags](#git-log-flags)
+    - [Undo Functions](#undo-functions)
     - [Branches](#branches)
         - [Check Differences Between Branches](#check-differences-between-branches)
     - [Using Git with Github](#using-git-with-github)
@@ -34,6 +41,7 @@ Git is a software that allows you to keep track of changes made to a project ove
 
 1. A Working Directory: where you'll be doing all the work: creating, editing, deleting and organizing files
 2. A Staging Area: where you'll list changes you make to the working directory
+    * "Tracked files"
 3. A Repository: where Git permanently stores those changes as different versions of the project
     * Changes are saved as a commit
 
@@ -59,7 +67,8 @@ Git is a software that allows you to keep track of changes made to a project ove
 ### Adding to the Staging Area
 `git add <file>`
 
-* Adds the specified file to be committed (commit) to the repository and tracks changes on the file
+* Adds the specified file to the staging area.
+* Specified file is now tracked if it was untracked.
 
 ```bash
 git remote add <remote name> <URL>
@@ -73,7 +82,7 @@ git remote add origin https://github.com/user/repo.git
 * Shortcut method that will add all files in the current directory except for the ignored files.
   * Ignored files are stored within .gitignore/
 
-## Check Differences
+### Check Differences
 * You can check the differences between tracked local files and files in the repo or staging area.
 
 `git diff <file>`
@@ -91,10 +100,7 @@ git remote add origin https://github.com/user/repo.git
 * Displays differences between previous branch version and current version.
   * The previous version is one which was last pushed to repo.
 
-## Branches
-`git branch`
-* Lists all branches of repository
-* Current branch is preceded by an asterisk
+### Check Status
 
 `git status`
 * Lists the current branch and any differences
@@ -105,14 +111,22 @@ git remote add origin https://github.com/user/repo.git
 `git checkout -b <branch-name>`
 *	Create a new branch locally.
 
+### Pushing
+`git commit -a`
+* Automatically stage every file that is already tracked.
+  * Skips `git add` step.
+
 `git push -u <origin> <branch-name>`
 *	To push a local new branch to the remote
 *	-u stands for –set-upstream
     * tells git to remember all of the commands so that <git push> will execute the same command as an alias now.
 
+### Pulling
 `git pull <origin> <branchName>`
-*	Returns any changes that have been made to the files under the folder name.
-
+* Returns any changes that have been made to the files under the folder name.
+* Brings the local branch up-to-date with the remote branch.
+* Combines `git fetch` and `git merge`
+* 
 `git commit`
 *	Any files added to the unstaged area which have been changed can be committed to the repository.
 
@@ -124,10 +138,47 @@ git remote add origin https://github.com/user/repo.git
 `git merge`
 * merge moves those commits to the local branch
 
-`git pull`
+### Removing
+`git rm <file>`
+* Removes the file from the working directory and from tracked files.
+* If you remove the file from the working directory
 
-* Brings the local branch up-to-date with the remote branch.
-* Combines `git fetch` and `git merge`
+## View Commit History
+
+`git log`
+* Lists commits made in a repository in reverse chronological order.
+* Commit history includes:
+    * SHA-1 checksum
+    * Author's name and email
+    * Date written
+    * Commit message
+
+### `git log` Flags
+`-p`
+* Shows difference introduced from each commit.
+* If following the `-p` flag by a number, then it will limit the output to the max number of commits.
+
+`--since=<n>.weeks`
+* Shows commits occuring within the last n weeks.
+
+`--S<string>`
+* Displays commits that changed the specified string.
+
+    `git log --Sfunction_name`
+    * Displays all commits where the function_name was added or removed.
+
+`--author`
+* Displays commits by a specified author.
+
+
+## Undo Functions
+`git commit -amend`
+* If a commit message is messed up or files were forgotten to be restaged, you can redo the commit message.
+
+## Branches
+`git branch`
+* Lists all branches of repository
+* Current branch is preceded by an asterisk
 
 ### Check Differences Between Branches
 
