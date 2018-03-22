@@ -35,6 +35,7 @@ Git is a software that allows you to keep track of changes made to a project ove
         - [Continually prompting for username](#continually-prompting-for-username)
         - [Repository or Branch DNE](#repository-or-branch-dne)
         - [Permission Denied (publickey)](#permission-denied-publickey)
+        - [Force Git Pull](#force-git-pull)
     - [Resources](#resources)
 
 ## Git Workflow
@@ -413,6 +414,12 @@ and the repository exists.
 `ssh-agent -s`
 * Check that a public key is loaded into ssh-agent
 `ssh-add -l`
+
+### Force Git Pull
+```bash
+git fetch -all
+git reset --hard origin/<branch_name>
+```
 
 ## Resources
 
