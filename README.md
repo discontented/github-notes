@@ -13,6 +13,7 @@ Git is a software that allows you to keep track of changes made to a project ove
         - [Pushing](#pushing)
         - [Pulling](#pulling)
         - [Removing](#removing)
+            - [Discard Local Changes](#discard-local-changes)
     - [View Commit History](#view-commit-history)
         - [`git log` Flags](#git-log-flags)
     - [Undo Functions](#undo-functions)
@@ -143,6 +144,12 @@ git remote add origin https://github.com/user/repo.git
 `git rm <file>`
 * Removes the file from the working directory and from tracked files.
 * If you remove the file from the working directory
+
+#### Discard Local Changes
+* For all locally staged files
+`git reset --hard`
+* For a single file
+`git checkout <filename>`
 
 ## View Commit History
 
@@ -372,6 +379,10 @@ $ git push http://example.com/repo.git
 Username: <type your username>
 Password: <type your password>
 ```
+
+`git config credential.https://example.com.username myusername`
+
+* `git help credentials` provides the manual page for how git stores credientials.
 
 ### Repository or Branch DNE
 
