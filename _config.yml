@@ -1,4 +1,4 @@
-theme: jekyll-theme-slate
+theme: minima
 name: GitHub Notes
 description: Notes on using Git and GitHub in your workflow.
 markdown: kramdown
